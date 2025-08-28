@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luton to Aylesbury Ijtema Coach Hire</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .countdown-container {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .countdown-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 60px;
+        }
+        
+        .countdown-number {
+            font-size: 20px;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .countdown-label {
+            font-size: 12px;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .contact-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .contact-btn.whatsapp {
+            background: #25D366;
+            border-color: #25D366;
+        }
+        
+        .contact-btn.whatsapp:hover {
+            background: #128C7E;
+            border-color: #128C7E;
+        }
+        
+        .contact-btn.phone {
+            background: #007bff;
+            border-color: #007bff;
+        }
+        
+        .contact-btn.phone:hover {
+            background: #0056b3;
+            border-color: #0056b3;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .fare-options {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .fare-option {
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .fare-option:hover {
+            border-color: #667eea;
+            background-color: #f8f9ff;
+        }
+        
+        .fare-option input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .fare-option.selected {
+            border-color: #667eea;
+            background-color: #f8f9ff;
+        }
+        
+        .bus-times {
+            display: none;
+            margin-top: 15px;
+        }
+        
+        .bus-times.show {
+            display: block;
+        }
+        
+        .bus-time-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #e1e8ed;
+            border-radius: 5px;
+        }
+        
+        .bus-time-option input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .pickup-locations {
+            margin-top: 15px;
+        }
+        
+        .pickup-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #e1e8ed;
+            border-radius: 5px;
+        }
+        
+        .pickup-option input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .confirmation {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .confirmation.show {
+            display: block;
+        }
+        
+        .confirmation h2 {
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+        
+        .confirmation p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .payment-links {
+            margin: 20px 0;
+        }
+        
+        .payment-link {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: 600;
+        }
+        
+        .payment-link:hover {
+            background: #219a52;
+        }
+        
+        .whatsapp-info {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .bulk-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .bulk-info h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .bulk-info p {
+            color: #856404;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .pricing-info {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-info h4 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-info p {
+            color: #1976d2;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-info-section {
+            background: #f8f9fa;
+            border: 2px solid #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .contact-info-section h4 {
+            color: #28a745;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link.whatsapp-main {
+            background: #25D366;
+            color: white;
+        }
+        
+        .contact-link.whatsapp-main:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        .contact-link.phone-main {
+            background: #007bff;
+            color: white;
+        }
+        
+        .contact-link.phone-main:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        small {
+            display: block;
+            margin-top: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .header, .form-container {
+                padding: 20px;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-link {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+            
+            .countdown-timer {
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                min-width: 50px;
+                padding: 8px 12px;
+            }
+            
+            .countdown-number {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Luton to Aylesbury Ijtema Coach Hire</h1>
+            <p>Friday 29th August - Return Sunday after Zuhr</p>
+            
+            <div class="countdown-container">
+                <div class="countdown-title">Aylesbury Ijtema 2025 Begins in:</div>
+                <div class="countdown-timer" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-buttons">
+                <a href="https://wa.me/447773477741" class="contact-btn whatsapp" target="_blank">
+                    📱 WhatsApp: +44 777 347741
+                </a>
+                <a href="tel:+447773477741" class="contact-btn phone">
+                    📞 Call: +44 777 347741
+                </a>
+            </div>
+        </div>
+        
+        <div class="form-container" id="bookingForm">
+            <div class="pricing-info">
+                <h4>Pricing Information</h4>
+                <p>• Students: £5 per one-way fare (Student ID required)</p>
+                <p>• All Others: £10 per one-way fare</p>
+                <p>• Bulk bookings: Minimum 5 passengers</p>
+            </div>
+            
+            <form id="coachBookingForm">
+                <div class="form-group">
+                    <label for="masjidName">Name of Masjid *</label>
+                    <select id="masjidName" name="masjidName" required>
+                        <option value="">Select your Masjid</option>
+                        <option value="AI Falah Masjid & Community Centre">AI Falah Masjid & Community Centre</option>
+                        <option value="Al Jalal Masjid">Al Jalal Masjid</option>
+                        <option value="Baitul Abraar Jame Masiid">Baitul Abraar Jame Masiid</option>
+                        <option value="Bury Park Masiid">Bury Park Masiid</option>
+                        <option value="Farley Community Centre">Farley Community Centre</option>
+                        <option value="Farley Hill Masjid">Farley Hill Masjid</option>
+                        <option value="Hockwell Ring Masijid">Hockwell Ring Masijid</option>
+                        <option value="Jalalabad Jame Masjid">Jalalabad Jame Masjid</option>
+                        <option value="Jamia Al Akbaria">Jamia Al Akbaria</option>
+                        <option value="Jamia Islamia Ghousia Trust">Jamia Islamia Ghousia Trust</option>
+                        <option value="Kokni Community Centre Masjid And Madrassah">Kokni Community Centre Masjid And Madrassah</option>
+                        <option value="Leagrave Hall Masiid">Leagrave Hall Masiid</option>
+                        <option value="Luton Central Mosque">Luton Central Mosque</option>
+                        <option value="Luton Islamic Centre">Luton Islamic Centre</option>
+                        <option value="Luton Town Mall Musallah">Luton Town Mall Musallah</option>
+                        <option value="Luton Turkish Education & Culture Trust">Luton Turkish Education & Culture Trust</option>
+                        <option value="Madina Masjid">Madina Masjid</option>
+                        <option value="Masjid Al Hira">Masjid Al Hira</option>
+                        <option value="Masjid Al Huda">Masjid Al Huda</option>
+                        <option value="Masjid Al Sunnah">Masjid Al Sunnah</option>
+                        <option value="Masjid Bilal">Masjid Bilal</option>
+                        <option value="Masjid Ibrahim">Masjid Ibrahim</option>
+                        <option value="Masjid Irshaad">Masjid Irshaad</option>
+                        <option value="Masjid Noor">Masjid Noor</option>
+                        <option value="Suffatul Islam Masjid">Suffatul Islam Masjid</option>
+                        <option value="Zakariya Masiid">Zakariya Masiid</option>
+                        <option value="Zuhri Trust">Zuhri Trust</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Booking Type *</label>
+                    <div class="fare-options">
+                        <div class="fare-option" onclick="selectBookingType('individual')">
+                            <input type="radio" id="individual" name="bookingType" value="individual" required>
+                            <label for="individual">Individual Booking</label>
+                        </div>
+                        <div class="fare-option" onclick="selectBookingType('bulk')">
+                            <input type="radio" id="bulk" name="bookingType" value="bulk" required>
+                            <label for="bulk">Bulk Booking (Responsible Brothers Only)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="individualDetailsSection" style="display: none;">
+                    <label for="passengerName">Passenger Full Name *</label>
+                    <input type="text" id="passengerName" name="passengerName">
+                    
+                    <label for="contactNumber" style="margin-top: 15px;">Contact Number *</label>
+                    <input type="tel" id="contactNumber" name="contactNumber">
+                </div>
+
+                <div class="form-group" id="bulkDetailsSection" style="display: none;">
+                    <div class="bulk-info">
+                        <h4>Bulk Booking Information</h4>
+                        <p>• Minimum 5 passengers required for bulk booking</p>
+                        <p>• Responsible brother must collect payment from all passengers</p>
+                        <p>• One payment to be made for entire group</p>
+                        <p>• Passenger list must be provided via WhatsApp after booking</p>
+                    </div>
+                    
+                    <label for="numberOfPassengers" style="margin-top: 15px;">Number of Passengers *</label>
+                    <input type="number" id="numberOfPassengers" name="numberOfPassengers" min="5" max="50">
+                    
+                    <label for="responsibleBrotherName" style="margin-top: 15px;">Responsible Brother Name *</label>
+                    <input type="text" id="responsibleBrotherName" name="responsibleBrotherName">
+                    
+                    <label for="responsibleBrotherContact" style="margin-top: 15px;">Responsible Brother Contact *</label>
+                    <input type="tel" id="responsibleBrotherContact" name="responsibleBrotherContact">
+                </div>
+
+                <div class="form-group" id="coachOptionsSection" style="display: none;">
+                    <label>Coach Options *</label>
+                    <div class="fare-options">
+                        <div class="fare-option" onclick="selectCoachOption('ijtema')">
+                            <input type="radio" id="ijtema" name="coachOption" value="ijtema" required>
+                            <label for="ijtema">Aylesbury Ijtema (Friday Depart - Sunday Return)</label>
+                        </div>
+                        <div class="fare-option" onclick="selectCoachOption('jumua')">
+                            <input type="radio" id="jumua" name="coachOption" value="jumua" required>
+                            <label for="jumua">Jumua in Aylesbury (Friday there & back same day)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="fareTypeSection" style="display: none;">
+                    <label>Fare Type *</label>
+                    <div class="fare-options">
+                        <div class="fare-option" onclick="selectFareType('student')">
+                            <input type="radio" id="student" name="fareType" value="student" required>
+                            <label for="student">Student - £5 per one-way fare (Student ID Required)</label>
+                        </div>
+                        <div class="fare-option" onclick="selectFareType('regular')">
+                            <input type="radio" id="regular" name="fareType" value="regular" required>
+                            <label for="regular">Regular - £10 per one-way fare</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="studentIdSection" style="display: none;">
+                    <label for="studentId">Student ID Number *</label>
+                    <input type="text" id="studentId" name="studentId">
+                    <small>Student ID will be verified on the day. Please bring physical ID.</small>
+                </div>
+                
+                <div class="form-group bus-times" id="busTimesSection">
+                    <label>Bus Times (Friday only) *</label>
+                    <div class="bus-time-option">
+                        <input type="radio" id="time11am" name="busTime" value="11am">
+                        <label for="time11am">11:00 AM from Luton</label>
+                    </div>
+                    <div class="bus-time-option">
+                        <input type="radio" id="time3pm" name="busTime" value="3pm">
+                        <label for="time3pm">3:00 PM from Luton</label>
+                    </div>
+                    <div class="bus-time-option">
+                        <input type="radio" id="time7pm" name="busTime" value="7pm">
+                        <label for="time7pm">7:00 PM from Luton</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Pickup Location *</label>
+                    <div class="pickup-locations">
+                        <div class="pickup-option">
+                            <input type="radio" id="southLuton" name="pickupLocation" value="South Luton: Bury Park Jame Masjid, LU1 1HB" required>
+                            <label for="southLuton">South Luton: Bury Park Jame Masjid, LU1 1HB</label>
+                        </div>
+                        <div class="pickup-option">
+                            <input type="radio" id="northLuton" name="pickupLocation" value="North Luton: Zakariya Masjid, LU4 0QY" required>
+                            <label for="northLuton">North Luton: Zakariya Masjid, LU4 0QY</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-info-section">
+                    <h4>Need Help? Contact Us</h4>
+                    <div class="contact-links">
+                        <a href="https://wa.me/447773477741" class="contact-link whatsapp-main" target="_blank">
+                            📱 WhatsApp Us
+                        </a>
+                        <a href="tel:+447773477741" class="contact-link phone-main">
+                            📞 Call Us
+                        </a>
+                    </div>
+                    <p style="margin-top: 10px; color: #666; font-size: 14px;">Available for booking assistance and queries</p>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Booking</button>
+            </form>
+        </div>
+        
+        <div class="confirmation" id="confirmationPage">
+            <h2>Booking Submitted Successfully!</h2>
+            <p>Thank you for your booking. Your details have been recorded.</p>
+            
+            <div class="payment-links">
+                <p><strong>Please complete payment using the link below:</strong></p>
+                <a href="#" class="payment-link" id="paymentLink">Complete Payment</a>
+            </div>
+            
+            <div class="whatsapp-info">
+                <p><strong>Important:</strong> After payment, please WhatsApp proof of payment to:</p>
+                <p><strong>+44 777 347741</strong></p>
+                <p>to finalise your booking.</p>
+                <div id="bulkInstructions" style="display: none; margin-top: 15px;">
+                    <p><strong>For Bulk Bookings:</strong> Please also send a list of all passenger names via WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            // Target date: Friday 29th August 2025, 1:30 PM GMT
+            const targetDate = new Date('2025-08-29T13:30:00Z').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                // Event has started
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                document.querySelector('.countdown-title').textContent = 'Aylesbury Ijtema 2025 has begun!';
+            }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Google Apps Script Web App URL - Replace with your actual deployed URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPbdMp66PockNmW3kvGNWI1_khNnWfyjpaReEtYLQ9fNXBoYic-zYsInPNm6s9f2l1/exec';
+        
+        // SumUp payment links - Replace with actual SumUp links
+        const PAYMENT_LINKS = {
+            student: 'https://sumup.com/student-link',
+            regular: 'https://sumup.com/regular-link'
+        };
+        
+        function selectBookingType(type) {
+            // Remove selected class from all options
+            document.querySelectorAll('.fare-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            event.currentTarget.classList.add('selected');
+            
+            // Check the radio button
+            document.getElementById(type).checked = true;
+            
+            // Show/hide relevant sections
+            const individualSection = document.getElementById('individualDetailsSection');
+            const bulkSection = document.getElementById('bulkDetailsSection');
+            const coachSection = document.getElementById('coachOptionsSection');
+            
+            if (type === 'individual') {
+                individualSection.style.display = 'block';
+                bulkSection.style.display = 'none';
+                coachSection.style.display = 'block';
+                
+                // Make individual fields required
+                document.getElementById('passengerName').required = true;
+                document.getElementById('contactNumber').required = true;
+                
+                // Remove bulk field requirements
+                document.getElementById('numberOfPassengers').required = false;
+                document.getElementById('responsibleBrotherName').required = false;
+                document.getElementById('responsibleBrotherContact').required = false;
+            } else {
+                individualSection.style.display = 'none';
+                bulkSection.style.display = 'block';
+                coachSection.style.display = 'block';
+                
+                // Remove individual field requirements
+                document.getElementById('passengerName').required = false;
+                document.getElementById('contactNumber').required = false;
+                
+                // Make bulk fields required
+                document.getElementById('numberOfPassengers').required = true;
+                document.getElementById('responsibleBrotherName').required = true;
+                document.getElementById('responsibleBrotherContact').required = true;
+            }
+        }
+        
+        function selectCoachOption(option) {
+            // Remove selected class from coach options
+            document.querySelectorAll('#coachOptionsSection .fare-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            event.currentTarget.classList.add('selected');
+            
+            // Check the radio button
+            document.getElementById(option).checked = true;
+            
+            // Show fare type section
+            document.getElementById('fareTypeSection').style.display = 'block';
+            
+            // Show bus times section
+            document.getElementById('busTimesSection').classList.add('show');
+            document.querySelectorAll('input[name="busTime"]').forEach(input => {
+                input.required = true;
+            });
+        }
+        
+        function selectFareType(type) {
+            // Remove selected class from fare type options
+            document.querySelectorAll('#fareTypeSection .fare-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            event.currentTarget.classList.add('selected');
+            
+            // Check the radio button
+            document.getElementById(type).checked = true;
+            
+            // Show/hide student ID section
+            const studentIdSection = document.getElementById('studentIdSection');
+            if (type === 'student') {
+                studentIdSection.style.display = 'block';
+                document.getElementById('studentId').required = true;
+            } else {
+                studentIdSection.style.display = 'none';
+                document.getElementById('studentId').required = false;
+            }
+        }
+        
+        document.getElementById('coachBookingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Add timestamp
+            data.timestamp = new Date().toISOString();
+            
+            try {
+                // Submit to Google Sheets
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show confirmation page
+                    document.getElementById('bookingForm').style.display = 'none';
+                    document.getElementById('confirmationPage').classList.add('show');
+                    
+                    // Set appropriate payment link
+                    const paymentLink = document.getElementById('paymentLink');
+                    const fareType = data.fareType;
+                    const bookingType = data.bookingType;
+                    const coachOption = data.coachOption;
+                    
+                    paymentLink.href = PAYMENT_LINKS[fareType];
+                    
+                    // Calculate pricing based on coach option and fare type
+                    const pricePerPerson = fareType === 'student' ? 5 : 10;
+                    let totalFarePerPerson;
+                    
+                    if (coachOption === 'ijtema') {
+                        // Friday to Sunday = 2 one-way fares
+                        totalFarePerPerson = pricePerPerson * 2;
+                    } else {
+                        // Jumua = Friday there and back same day = 2 one-way fares
+                        totalFarePerPerson = pricePerPerson * 2;
+                    }
+                    
+                    // Calculate total for bulk bookings
+                    if (bookingType === 'bulk') {
+                        const numPassengers = parseInt(data.numberOfPassengers);
+                        const totalPrice = numPassengers * totalFarePerPerson;
+                        paymentLink.textContent = `Pay £${totalPrice} for ${numPassengers} passengers`;
+                    } else {
+                        paymentLink.textContent = `Pay £${totalFarePerPerson} - ${fareType === 'student' ? 'Student' : 'Regular'} Fare`;
+                    }
+                    
+                    // Show bulk instructions if needed
+                    if (bookingType === 'bulk') {
+                        document.getElementById('bulkInstructions').style.display = 'block';
+                    }
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                alert('There was an error submitting your booking. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Booking';
+            }
+        });
+    </script>
+</body>
+</html>
